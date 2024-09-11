@@ -7,15 +7,15 @@ pipeline {
 
             agent defaultAgent
 
-            steps {
+            script {
                 // create a virtual environment
-                "python3 -m venv venv"
+                sh "python3 -m venv venv"
 
                 // activate the environment
-                "source venv/bin/activate"
+                sh "source venv/bin/activate"
 
                 // install dependencies
-                "python3 -m pip install --progress-bar off -r requirements.txt"
+                sh "python3 -m pip install --progress-bar off -r requirements.txt"
             }
         }
 
@@ -23,9 +23,9 @@ pipeline {
 
             agent defaultAgent
 
-            steps {
+            script {
                 // Run pytest
-                "pytest"
+                sh "pytest"
             }
         }
 
@@ -33,8 +33,8 @@ pipeline {
 
             agent defaultAgent
 
-            steps {
-                "echo Deploy to the Cloud"
+            script {
+                sh "echo Deploy to the Cloud"
             }
         }
     }

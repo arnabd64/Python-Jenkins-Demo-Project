@@ -1,6 +1,6 @@
 pipeline {
 
-    agent defaultAgent
+    agent any
 
     stages {
         stage('Setup') {

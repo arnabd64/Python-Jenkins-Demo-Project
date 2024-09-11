@@ -1,6 +1,9 @@
 pipeline {
 
-    agent 'defaultAgent'
+    agent node{
+        label 'defaultAgent'
+        customworkspace '/tmp/python-jenkins'
+    }
 
     stages {
         stage('System Info') {
@@ -9,7 +12,7 @@ pipeline {
                 sh "python3 --version"
             }
         }
-        
+
         stage('Setup') {
             steps {
                 // create a virtual environment

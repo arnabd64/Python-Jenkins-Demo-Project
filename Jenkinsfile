@@ -1,7 +1,10 @@
 pipeline {
 
     agent {
-        label 'defaultAgent'
+        docker {
+            image 'python:3.11-slim-bookworm'
+            label 'my-python-agent'
+        }
     }
 
     stages {
@@ -22,7 +25,6 @@ pipeline {
         stage('Testing') {
 
             steps {
-                // Run pytest
                 sh "pytest"
             }
         }

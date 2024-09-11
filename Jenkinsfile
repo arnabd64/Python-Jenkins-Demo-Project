@@ -1,5 +1,5 @@
 pipeline {
-    agents {
+    agent {
         docker {
             image "python:3.11-slim-bookworm"
         }

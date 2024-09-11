@@ -1,9 +1,6 @@
 pipeline {
 
-    agent {
-        label 'defaultAgent'
-        customWorkspace '/tmp/python-demo'
-    }
+    agent 'defaultAgent'
 
     stages {
         stage('System Info') {
@@ -12,6 +9,7 @@ pipeline {
                 sh "python3 --version"
             }
         }
+        
         stage('Setup') {
             steps {
                 // create a virtual environment

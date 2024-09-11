@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Setup') {
 
-            script {
+            steps {
                 // create a virtual environment
                 sh "python3 -m venv venv"
 
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Testing') {
 
-            script {
+            steps {
                 // Run pytest
                 sh "pytest"
             }
@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
 
-            script {
+            steps {
                 sh "echo Deploy to the Cloud"
             }
         }

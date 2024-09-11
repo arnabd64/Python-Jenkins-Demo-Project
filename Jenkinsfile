@@ -24,7 +24,7 @@ pipeline {
                 sh "source venv/bin/activate"
 
                 // install dependencies
-                sh "python3 -m pip install --queit -r requirements.txt"
+                sh "python3 -m pip install --quiet -r requirements.txt"
             }
         }
 

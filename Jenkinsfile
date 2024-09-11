@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage('System Info') {
             steps {
-                sh "uname -a"
-                sh "python3 --version"
+                echo "$(uname -a)"
+                echo "$(python3 --version)"
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "echo Deploy to the Cloud"
+                echo "Deploy to the Cloud"
             }
         }
     }

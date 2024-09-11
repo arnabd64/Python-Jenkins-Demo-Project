@@ -1,8 +1,7 @@
 pipeline {
 
-    agent node{
+    agent {
         label 'defaultAgent'
-        customworkspace '/tmp/python-jenkins'
     }
 
     stages {

@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent defaultAgent
 
     environment {
         GIT_REPO = 'https://github.com/arnabd64/Python-Jenkins-Demo-Project.git'
@@ -7,11 +7,6 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            agent {
-                docker {
-                    image "python:3.11-slim-bookworm"
-                }
-            }
             steps {
                 git "$env.GIT_REPO_URL"
             }

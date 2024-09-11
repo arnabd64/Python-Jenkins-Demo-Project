@@ -1,3 +1,8 @@
+# application
 fastapi
 uvicorn[standard]
 python-multipart
+
+# testing
+pytest
+httpx

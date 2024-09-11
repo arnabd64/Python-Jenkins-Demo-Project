@@ -1,10 +1,8 @@
 pipeline {
 
     agent {
-        node {
-            label 'defaultModel'
-            customWorkspace '/tmp/python-jenkins'
-        }
+        label 'defaultAgent'
+        customWorkspace '/tmp/python-demo'
     }
 
     stages {

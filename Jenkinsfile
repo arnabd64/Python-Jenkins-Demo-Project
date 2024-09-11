@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage('System Info') {
             steps {
-                echo "$(uname -a)"
-                echo "$(python3 --version)"
+                sh "uname -a"
+                sh "python3 --version"
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
                 sh "source venv/bin/activate"
 
                 // install dependencies
-                sh "python3 -m pip install --progress-bar off -r requirements.txt"
+                sh "python3 -m pip install --queit -r requirements.txt"
             }
         }
 

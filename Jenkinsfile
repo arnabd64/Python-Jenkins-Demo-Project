@@ -1,7 +1,10 @@
 pipeline {
 
     agent {
-        node { label 'defaultAgent' }
+        node {
+            label 'defaultAgent'
+            customWorkspace '/tmp/python_project'
+        }
     }
 
     stages {

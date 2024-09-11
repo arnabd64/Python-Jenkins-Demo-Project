@@ -44,6 +44,7 @@ pipeline {
     post {
         always {
             cleanWs()
+            echo "${BUILD_URL}"
         }
     }
 }

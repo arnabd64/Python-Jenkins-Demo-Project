@@ -1,11 +1,9 @@
 pipeline {
 
-    agent any
+    agent defaultAgent
 
     stages {
         stage('Setup') {
-
-            agent defaultAgent
 
             script {
                 // create a virtual environment
@@ -21,8 +19,6 @@ pipeline {
 
         stage('Testing') {
 
-            agent defaultAgent
-
             script {
                 // Run pytest
                 sh "pytest"
@@ -30,8 +26,6 @@ pipeline {
         }
 
         stage('Deploy') {
-
-            agent defaultAgent
 
             script {
                 sh "echo Deploy to the Cloud"

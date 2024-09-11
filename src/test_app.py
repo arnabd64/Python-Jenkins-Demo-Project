@@ -3,7 +3,8 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
-def test_read_main():
+def test_root():
+    print(app.version)
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"message": "Server is Running"}

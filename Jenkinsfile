@@ -1,36 +1,41 @@
 pipeline {
-    agent defaultAgent
 
-    environment {
-        GIT_REPO = 'https://github.com/arnabd64/Python-Jenkins-Demo-Project.git'
-    }
+    agent none
 
     stages {
-        stage('Checkout') {
+        stage('Setup') {
+
+            agent defaultAgent
+
             steps {
-                git "$env.GIT_REPO_URL"
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    bash "pip install -r requirements.txt"
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    bash "uvicorn app:app --host=0.0.0.0"
-                }
+                // create a virtual environment
+                "python3 -m venv venv"
+
+                // activate the environment
+                "source venv/bin/activate"
+
+                // install dependencies
+                "python3 -m pip install --progress-bar off -r requirements.txt"
             }
         }
 
-    }
-    
-    post {
-        always {
-            cleanWs()
+        stage('Testing') {
+
+            agent defaultAgent
+
+            steps {
+                // Run pytest
+                "pytest"
+            }
+        }
+
+        stage('Deploy') {
+
+            agent defaultAgent
+
+            steps {
+                "echo Deploy to the Cloud"
+            }
         }
     }
 }

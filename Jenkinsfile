@@ -1,15 +1,20 @@
 pipeline {
 
     agent {
-        docker {
-            image 'python:3.11-slim-bookworm'
-            label 'my-python-agent'
+        agent {
+            label 'defaultModel'
+            customWorkspace '/tmp/python-jenkins'
         }
     }
 
     stages {
+        stage('System Info') {
+            steps {
+                sh "uname -a"
+                sh "python3 --version"
+            }
+        }
         stage('Setup') {
-
             steps {
                 // create a virtual environment
                 sh "python3 -m venv venv"
@@ -23,17 +28,21 @@ pipeline {
         }
 
         stage('Testing') {
-
             steps {
                 sh "pytest"
             }
         }
 
         stage('Deploy') {
-
             steps {
                 sh "echo Deploy to the Cloud"
             }
+        }
+    }
+
+    post {
+        always {
+            clearWs()
         }
     }
 }

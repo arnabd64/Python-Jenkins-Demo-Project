@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        agent {
+        node {
             label 'defaultModel'
             customWorkspace '/tmp/python-jenkins'
         }

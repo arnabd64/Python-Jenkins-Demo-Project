@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         node {
-            label 'defaultAgent'
+            label 'python-3.10'
             customWorkspace '/tmp/python_project'
         }
     }
